@@ -37,8 +37,8 @@ namespace derMelnik.ESOfishBot
             hookcolor = Color.FromArgb(255, 0, 204, 0);
             int counter = 0;
 
-            for (; ; )
-            {
+            while(WindowName != IntPtr.Zero)
+            { 
 
                 if (Pixelcolor.GetPixel(p) == idlecolor)
                 {
