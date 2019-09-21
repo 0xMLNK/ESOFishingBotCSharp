@@ -30,43 +30,48 @@ namespace derMelnik.ESOfishBot
                 Y = 2
             };
 
-            Color IdleColor = Color.FromArgb(255, 101, 69, 0);
-            Color InProcessColor = Color.FromArgb(255, 75, 156, 213);
-            Color TimeToHookColor = Color.FromArgb(255, 0, 204, 0);
+            Color idleColor = Color.FromArgb(255, 101, 69, 0);
+            Color inProcessColor = Color.FromArgb(255, 75, 156, 213);
+            Color timeToHookColor = Color.FromArgb(255, 0, 204, 0);
             int counter = 0;
 
-            while(WindowName != IntPtr.Zero)
-            { 
 
-                if (Pixelcolor.GetPixel(AddonPosition) == IdleColor)
+            while(WindowName != IntPtr.Zero)
+            {
+                Random random = new Random();
+                int randomNumber = random.Next(1000, 2000);
+                Console.WriteLine(randomNumber);
+
+                if (Pixelcolor.GetPixel(AddonPosition) == idleColor)
                 {
                     Console.WriteLine("Start Fishing");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(randomNumber);
                     PostMessage(WindowName, 0x100, (IntPtr)Keys.E, IntPtr.Zero);
                     Thread.Sleep(100);
                     PostMessage(WindowName, 0x101, (IntPtr)Keys.E, IntPtr.Zero);
                 }
-                else if (Pixelcolor.GetPixel(AddonPosition) == InProcessColor)
+                else if (Pixelcolor.GetPixel(AddonPosition) == inProcessColor)
                 {
                     Console.WriteLine("Fishing in progress");
                     Thread.Sleep(200);
                 }
-                else if (Pixelcolor.GetPixel(AddonPosition) == TimeToHookColor)
+                else if (Pixelcolor.GetPixel(AddonPosition) == timeToHookColor)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(randomNumber);
                     PostMessage(WindowName, 0x100, (IntPtr)Keys.E, IntPtr.Zero);
                     Thread.Sleep(100);
                     PostMessage(WindowName, 0x101, (IntPtr)Keys.E, IntPtr.Zero);
                     Console.WriteLine("Gotcha");
                     counter++;
                     Console.WriteLine("Total: " + counter);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(randomNumber);
                 }
                 else
                 {
                     Console.WriteLine("No Fish here, find new FishingHole.");
+                    Thread.Sleep(5000);
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(500);
             }
 
         }
