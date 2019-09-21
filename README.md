@@ -17,6 +17,7 @@ How it works:
 
 bot checking widget color and sending "E" key command to start fishing or hook fish. no injection, no memory read, and co.
 Resources:
+
 0.1% CPU ~12MB RAM.
 
 All u need to do some times select bait and move ur ass between fishing holes.
