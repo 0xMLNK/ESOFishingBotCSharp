@@ -15,7 +15,7 @@ namespace derMelnik.ESOfishBot
         [DllImport("user32.dll")]
         public static extern IntPtr PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-        static void Main(string[] args)
+        static void Main()
         {
             IntPtr WindowName = FindWindow(null, "Elder Scrolls Online");
             if (WindowName == IntPtr.Zero)
@@ -24,42 +24,40 @@ namespace derMelnik.ESOfishBot
                 return;
             }
 
-            Point p = new Point();
-            p.X = Screen.PrimaryScreen.Bounds.Width / 2 - 485;
-            p.Y = 2;
-            
-            Color idlecolor = new Color();
-            Color processcolor = new Color();
-            Color hookcolor = new Color();
+            Point AddonPosition = new Point
+            {
+                X = Screen.PrimaryScreen.Bounds.Width / 2 - 485,
+                Y = 2
+            };
 
-            idlecolor = Color.FromArgb(255, 101, 69, 0);
-            processcolor = Color.FromArgb(255, 75, 156, 213);
-            hookcolor = Color.FromArgb(255, 0, 204, 0);
+            Color IdleColor = Color.FromArgb(255, 101, 69, 0);
+            Color InProcessColor = Color.FromArgb(255, 75, 156, 213);
+            Color TimeToHookColor = Color.FromArgb(255, 0, 204, 0);
             int counter = 0;
 
             while(WindowName != IntPtr.Zero)
             { 
 
-                if (Pixelcolor.GetPixel(p) == idlecolor)
+                if (Pixelcolor.GetPixel(AddonPosition) == IdleColor)
                 {
-                    Console.WriteLine("Statr Fishing");
+                    Console.WriteLine("Start Fishing");
                     Thread.Sleep(1000);
                     PostMessage(WindowName, 0x100, (IntPtr)Keys.E, IntPtr.Zero);
                     Thread.Sleep(100);
                     PostMessage(WindowName, 0x101, (IntPtr)Keys.E, IntPtr.Zero);
                 }
-                else if (Pixelcolor.GetPixel(p) == processcolor)
+                else if (Pixelcolor.GetPixel(AddonPosition) == InProcessColor)
                 {
-                    Console.WriteLine("Fishing in progerss");
+                    Console.WriteLine("Fishing in progress");
                     Thread.Sleep(200);
                 }
-                else if (Pixelcolor.GetPixel(p) == hookcolor)
+                else if (Pixelcolor.GetPixel(AddonPosition) == TimeToHookColor)
                 {
                     Thread.Sleep(1000);
                     PostMessage(WindowName, 0x100, (IntPtr)Keys.E, IntPtr.Zero);
                     Thread.Sleep(100);
                     PostMessage(WindowName, 0x101, (IntPtr)Keys.E, IntPtr.Zero);
-                    Console.WriteLine("Gocha");
+                    Console.WriteLine("Gotcha");
                     counter++;
                     Console.WriteLine("Total: " + counter);
                     Thread.Sleep(1000);
@@ -68,10 +66,9 @@ namespace derMelnik.ESOfishBot
                 {
                     Console.WriteLine("No Fish here, find new FishingHole.");
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(5000);
             }
 
         }
     }
 }
-//28 5 244
