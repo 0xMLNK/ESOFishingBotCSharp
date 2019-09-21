@@ -11,7 +11,7 @@ Provision's Chalutier Fishing plugin https://www.esoui.com/downloads/info...erFi
 
 Alot of Bait
 
-Dont move the fucking Provision's Chalutier Fishing Widget, a bot gets widgets default position on the screen. if u move it just delete C:\Users\ivanm\Documents\Elder Scrolls Online\live\SavedVariables\ProvisionsChalutier\.lua and relaunch the inteface
+Dont move the fucking Provision's Chalutier Fishing Widget, a bot gets widgets default position on the screen. if u move it just delete C:\Users\URSERNAME\Documents\Elder Scrolls Online\live\SavedVariables\ProvisionsChalutier\.lua and relaunch the inteface
 
 How it works:
 
