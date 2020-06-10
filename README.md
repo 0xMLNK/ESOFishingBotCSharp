@@ -7,7 +7,7 @@ Sources
 Reqs:
 Fullscreen Windowed Mode (mby works with Fullscreen I didn't test it)
 
-Provision's Chalutier Fishing plugin https://www.esoui.com/downloads/info...erFishing.html
+Provision's Chalutier Fishing plugin https://www.esoui.com/downloads/info2203-ProvisionsChalutierFishing.html
 
 Alot of Bait
 
