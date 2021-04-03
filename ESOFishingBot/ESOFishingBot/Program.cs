@@ -26,7 +26,7 @@ namespace derMelnik.ESOfishBot
 
             Point AddonPosition = new Point
             {
-                X = Screen.PrimaryScreen.Bounds.Width / 2 - 485,
+                X = Screen.PrimaryScreen.Bounds.Width / 2 - 470,
                 Y = 2
             };
 
@@ -38,17 +38,14 @@ namespace derMelnik.ESOfishBot
 
             while(WindowName != IntPtr.Zero)
             {
-                Random random = new Random();
-                int randomNumber = random.Next(1000, 2000);
-                Console.WriteLine(randomNumber);
-
                 if (Pixelcolor.GetPixel(AddonPosition) == idleColor)
                 {
                     Console.WriteLine("Start Fishing");
-                    Thread.Sleep(randomNumber);
                     PostMessage(WindowName, 0x100, (IntPtr)Keys.E, IntPtr.Zero);
-                    Thread.Sleep(100);
+                    Thread.Sleep(200);
                     PostMessage(WindowName, 0x101, (IntPtr)Keys.E, IntPtr.Zero);
+                    Thread.Sleep(1000);
+
                 }
                 else if (Pixelcolor.GetPixel(AddonPosition) == inProcessColor)
                 {
@@ -57,14 +54,14 @@ namespace derMelnik.ESOfishBot
                 }
                 else if (Pixelcolor.GetPixel(AddonPosition) == timeToHookColor)
                 {
-                    Thread.Sleep(randomNumber);
+                    Thread.Sleep(200);
                     PostMessage(WindowName, 0x100, (IntPtr)Keys.E, IntPtr.Zero);
-                    Thread.Sleep(100);
+                    Thread.Sleep(200);
                     PostMessage(WindowName, 0x101, (IntPtr)Keys.E, IntPtr.Zero);
                     Console.WriteLine("Gotcha");
                     counter++;
                     Console.WriteLine("Total: " + counter);
-                    Thread.Sleep(randomNumber);
+                    Thread.Sleep(2000);
                 }
                 else
                 {
